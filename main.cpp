@@ -1,5 +1,7 @@
 #include <iostream>
 #include <list>
+#include <set>
+#include <vector>
 #include <string>
 
 int main(int argc, char**argv)
@@ -20,20 +22,36 @@ int main(int argc, char**argv)
             std::string("boom!"),    // Comma after last element is optional.
         };
 
+    const size_t cnt = sizeof(str_array) / sizeof(str_array[0]);
 
-    std::cout << "Address of str_array  : " << std::hex << str_array << std::endl;
-    std::cout << "Value of str_array + 6: " << std::hex << str_array + 6 << std::endl;
-    std::cout << "Value of &str_array[6]: " << std::hex << &str_array[6] << std::endl;
-    std::cout << "Difference            : " << std::dec << (size_t) (str_array + 6) - (size_t) str_array << std::endl;
+    std::cout << "Element count, str_array: "
+    		  << cnt << std::endl;
+    std::cout << "Address of str_array    : "
+    		  << std::hex << str_array << std::endl;
+    std::cout << "Value of str_array + "
+    		  << cnt << "  : " << std::hex << str_array + cnt << std::endl;
+    std::cout << "Value of &str_array["
+    		  << cnt << "]  : " << std::hex << &str_array[cnt] << std::endl;
+    std::cout << "Difference              : "
+    		  << std::dec << (size_t) (str_array + cnt) - (size_t) str_array << std::endl;
     std::cout << std::endl;
 
-    std::cout << "Now intialize list with an array of std::string." << std::endl;
+    std::cout << "Now initialize list from an array of std::string." << std::endl;
     std::list<std::string> my_list(str_array, str_array + sizeof(str_array)/sizeof(str_array[0]));
 
     std::cout << "my_list: " << std::endl;
     for (std::list<std::string>::iterator iter = my_list.begin(); iter != my_list.end();  ++iter)
     {
         std::cout << "\t" << *iter << std::endl;        
+    }
+    std::cout << std::endl;
+
+    std::cout << "Initialize a set from my_list..." << std::endl;
+    std::set<std::string> my_set(my_list.begin(), my_list.end());
+    std::cout << "my_set: " << std::endl;
+    for (std::set<std::string>::iterator sIter = my_set.begin(); sIter != my_set.end();  ++sIter)
+    {
+        std::cout << "\t" << *sIter << std::endl;
     }
     std::cout << std::endl;
 
