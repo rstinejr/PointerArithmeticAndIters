@@ -1,6 +1,6 @@
 ##############
 
-MY_BIN_CFLAGS  = -g -O0 
+MY_BIN_CFLAGS  = -std=c++11 -g -O0 
 MY_BIN_LDFLAGS = -lstdc++ -lrt
 
 .PHONY:	clean run 
@@ -8,7 +8,7 @@ MY_BIN_LDFLAGS = -lstdc++ -lrt
 all:	main
 
 main.o:	main.cpp
-	g++ -Wall -g $(MY_BIN_CFLAGS) -c main.cpp -o $@
+	g++ -Wall $(MY_BIN_CFLAGS) -c main.cpp -o $@
 
 main:	main.o
 	g++ -o $@ main.o $(MY_BIN_LDFLAGS)
