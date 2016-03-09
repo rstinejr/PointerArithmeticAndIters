@@ -24,3 +24,10 @@ make clean run
 
 The executable created by this project is called *main*.
 
+## Take Home
+
+1. The resulting address from pointer arithmetic is the same as the resulting
+address of an array element.  That is, ```str_array + 6 == &str_array[6]```.
+2. For the pupose of STL collections, the type of an iterator of an array
+is a pointer to an element of the array.  I.e., for an array of struct *foo*, 
+the type of the iterator is pointer to *foo*.
