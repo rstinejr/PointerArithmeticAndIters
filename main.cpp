@@ -23,6 +23,7 @@ int main(int argc, char**argv)
 
     std::cout << "Address of str_array  : " << std::hex << str_array << std::endl;
     std::cout << "Value of str_array + 6: " << std::hex << str_array + 6 << std::endl;
+    std::cout << "Value of &str_array[6]: " << std::hex << &str_array[6] << std::endl;
     std::cout << "Difference            : " << std::dec << (size_t) (str_array + 6) - (size_t) str_array << std::endl;
     std::cout << std::endl;
 
