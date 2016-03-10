@@ -28,7 +28,7 @@ The executable created by this project is called *main*.
 
 1. The resulting address from pointer arithmetic is the same as the resulting
 address of an array element.  That is, ```str_array + 6 == &str_array[6]```.
-2. For the pupose of standard template library collections such as *vector*
+2. For the pupose of standard template library "sequential containers" such as *vector*
 and *list*, the type of an iterator of an array
 is a pointer to an element of the array.  I.e., for an array of struct *foo*, 
 the type of the iterator is pointer to *foo*.
