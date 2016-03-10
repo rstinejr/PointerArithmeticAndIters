@@ -4,6 +4,19 @@
 #include <string>
 #include <vector>
 
+template <typename ITER>
+void printColl(std::string nm, ITER start, ITER end)
+{
+    std::cout << nm.c_str() << ": " << std::endl;
+
+    for (ITER iter = start; iter != end; ++iter)
+    {
+        std::cout << "\t" << *iter << std::endl;
+    }
+
+    std::cout << std::endl;
+}
+
 int main(int argc, char**argv)
 {
     std::string empty_array[] = { };
@@ -39,30 +52,17 @@ int main(int argc, char**argv)
     std::cout << "Now initialize list from an array of std::string." << std::endl;
     std::list<std::string> my_list(str_array, str_array + sizeof(str_array)/sizeof(str_array[0]));
 
-    std::cout << "my_list: " << std::endl;
-    for (std::list<std::string>::iterator iter = my_list.begin(); iter != my_list.end(); ++iter)
-    {
-        std::cout << "\t" << *iter << std::endl;        
-    }
-    std::cout << std::endl;
+    printColl<std::list<std::string>::iterator> ("my_list", my_list.begin(), my_list.end());
 
     std::cout << "Initialize a set from my_list..." << std::endl;
     std::set<std::string> my_set(my_list.begin(), my_list.end());
-    std::cout << "my_set:" << std::endl;
-    for (std::set<std::string>::iterator sIter = my_set.begin(); sIter != my_set.end(); ++sIter)
-    {
-        std::cout << "\t" << *sIter << std::endl;
-    }
-    std::cout << std::endl;
+
+    printColl<std::set<std::string>::iterator>("my_set", my_set.begin(), my_set.end());
 
     std::cout << "Initialize a vector using the c++11 approach, vector<T> v {t1, t2}:" << std::endl;
     std::vector<std::string> my_vec {std::string("Good"), std::string("Golly"), std::string("Miss"), std::string("Molly")};
-    std::cout << "my_vec:" << std::endl;
-    for (std::vector<std::string>::iterator vIter = my_vec.begin(); vIter != my_vec.end(); ++vIter)
-    {
-        std::cout << "\t" << *vIter << std::endl;
-    }
-    std::cout << std::endl;
+
+    printColl<std::vector<std::string>::iterator>("my_vec", my_vec.begin(), my_vec.end());
 
     std::cout << "Done!" << std::endl;
 
